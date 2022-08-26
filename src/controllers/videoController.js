@@ -1,6 +1,6 @@
 const fakeUser = {
   username: "fakeuser",
-  loggedIn: false,
+  loggedIn: true,
 };
 
 export const trending = (req, res) => {
@@ -30,7 +30,7 @@ export const trending = (req, res) => {
       id: 1,
     },
   ];
-  res.render("home", { pageTitle: "Home", videos });
+  res.render("home", { pageTitle: "Home", videos, fakeUser });
 };
 export const see = (req, res) => res.render("watch");
 export const edit = (req, res) => res.render("edit");
