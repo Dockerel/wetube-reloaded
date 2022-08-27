@@ -1,11 +1,7 @@
 extends base
 include mixins/video
 
-block content 
-    if (fakeUser.loggedIn)
-        button log out
-    else 
-        button login
+block content
     h2 Welcome here you see trending videos!
     each video in videos
         +video(video)
