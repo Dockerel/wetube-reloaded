@@ -8,7 +8,7 @@ export const postJoin = async (req, res) => {
   if (password !== password2) {
     return res.status(400).render("join", {
       pageTitle,
-      errorMessage: "Passwrod confirmation does not match.",
+      errorMessage: "Password confirmation does not match.",
     });
   }
   const exists = await User.exists({ $or: [{ username }, { email }] });
@@ -52,6 +52,8 @@ export const postLogin = async (req, res) => {
       errorMessage: "Wrong Password.",
     });
   }
+  req.session.loggedIn = true;
+  req.session.user = user;
   return res.redirect("/");
 };
 export const edit = (req, res) => res.send("Edit User");
