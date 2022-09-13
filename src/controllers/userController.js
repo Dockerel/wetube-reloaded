@@ -1,7 +1,6 @@
 import User from "../models/User";
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
-import { token } from "morgan";
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 export const postJoin = async (req, res) => {
@@ -128,9 +127,105 @@ export const finishGithubLogin = async (req, res) => {
     return res.redirect("/login");
   }
 };
+
+export const startNaverLogin = (req, res) => {
+  const baseUrl = "https://nid.naver.com/oauth2.0/authorize";
+  const config = {
+    response_type: "code",
+    client_id: process.env.NAVER_CLIENT,
+    redirect_uri: "http://localhost:4000/users/naver/finish",
+    state: process.env.NAVER_STATE,
+  };
+  const params = new URLSearchParams(config).toString();
+  const finalUrl = `${baseUrl}?${params}`;
+  return res.redirect(finalUrl);
+};
+export const finishNaverLogin = async (req, res) => {
+  const { code, state } = req.query;
+  const baseUrl = "https://nid.naver.com/oauth2.0/token";
+  const config = {
+    grant_type: "authorization_code",
+    client_id: process.env.NAVER_CLIENT,
+    client_secret: process.env.NAVER_SECRET,
+    code,
+    state: process.env.NAVER_STATE,
+  };
+  const params = new URLSearchParams(config).toString();
+  const finalUrl = `${baseUrl}?${params}`;
+  const tokenRequest = await (
+    await fetch(finalUrl, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+    })
+  ).json();
+  if ("access_token" in tokenRequest) {
+    const { access_token, token_type } = tokenRequest;
+    const apiUrl = "https://openapi.naver.com/v1/nid/me";
+    const userDataJson = await (
+      await fetch(`${apiUrl}`, {
+        headers: {
+          Authorization: `${token_type} ${access_token}`,
+        },
+      })
+    ).json();
+    const userData = userDataJson.response;
+    let user = await User.findOne({ email: userData.email });
+    if (!user) {
+      user = await User.create({
+        avatarUrl: userData.profile_image,
+        name: userData.name,
+        username: userData.name,
+        email: userData.email,
+        password: "",
+        socialOnly: true,
+      });
+    }
+    req.session.loggedIn = true;
+    req.session.user = user;
+    res.redirect("/");
+  } else {
+    res.redirect("/login");
+  }
+};
+
 export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
 };
-export const edit = (req, res) => res.send("Edit User");
+
+export const getEdit = (req, res) => {
+  res.render("edit-profile", { pageTitle: "Edit Profile" });
+};
+export const postEdit = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+    body: { name, email, username, location },
+  } = req;
+
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      _id,
+      {
+        name,
+        email,
+        username,
+        location,
+      },
+      { new: true }
+    );
+    req.session.user = updatedUser;
+    res.redirect("/users/edit");
+  } catch (error) {
+    return res
+      .status(400)
+      .render("edit-profile", {
+        pageTitle: "Edit Profile",
+        errorMessage: "This username/email is already taken",
+      });
+  }
+};
 export const see = (req, res) => res.send("see");
