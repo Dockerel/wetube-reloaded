@@ -12,7 +12,9 @@ html(lang="ko")
                         a(href="/") Home
                     if loggedIn     
                         li  
-                            a(href="/users/edit") Edit Profile 
+                            a(href="/users/edit") Edit Profile
+                        li 
+                            a(href=`/users/${loggedInUser._id}`) My profile
                         li 
                             a(href="/users/logout") Log Out
                         li 
