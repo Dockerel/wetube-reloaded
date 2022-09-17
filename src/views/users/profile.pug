@@ -2,7 +2,28 @@ extends ../base
 include ../mixins/video
 
 block content
-    each video in user.videos
-        +video(video)
-    else
-        li Sorry nothing found.
+    div.user
+        div.user-profile
+            div.user-profile__column
+                img(src=user.avatarUrl)
+            div.user-profile__column
+                span=user.name 
+                span=user.username
+                span=user.email
+                span=user.location
+        div.videoProfile-video
+            each video in user.videos
+                
+                a(href=`/videos/${video.id}`)
+                    div.videoProfile__link
+                        div.videoProfile__thumbnail
+                        div.videoProfile__column
+                            div.videoProfile__info
+                                h4 #{video.title}
+                                div.videoProfile__info--detail
+                                    a(href=`/users/${user._id}`)
+                                        span=user.username
+                                    small ∙ #{video.createdAt.getMonth()}월 #{video.createdAt.getDate()}일
+                
+            else
+                li.nothing Sorry nothing found.

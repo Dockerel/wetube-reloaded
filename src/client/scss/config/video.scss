@@ -1,11 +1,7 @@
 .video {
   margin: 0 15px;
   margin-bottom: 30px;
-  .video__thumbnail {
-    width: 240px;
-    height: 140px;
-    background-color: skyblue;
-  }
+
   .video__column {
     display: flex;
     margin-top: 13px;
@@ -21,7 +17,11 @@
     }
   }
 }
-
+.video__thumbnail {
+  width: 240px;
+  height: 140px;
+  background-color: skyblue;
+}
 .video__info:last-child {
   h4 {
     font-size: 15px;
