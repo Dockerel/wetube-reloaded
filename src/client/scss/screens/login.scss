@@ -1,0 +1,166 @@
+.login-form {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  > span {
+    &:first-child {
+      font-weight: 600;
+      font-size: 40px;
+      display: block;
+      margin-bottom: 30px;
+    }
+  }
+  @keyframes errorMessageAnimation {
+    from {
+      color: $red;
+    }
+    to {
+      color: white;
+    }
+  }
+  .error-message {
+    font-weight: 600;
+    font-size: 15px;
+    display: block;
+    margin-top: 30px;
+    animation: errorMessageAnimation 1s ease-in-out;
+  }
+  .login-form__column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2d2d2d;
+    padding: 30px;
+    border-radius: 10px;
+
+    .login-form__login {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px;
+        background-color: white;
+        border-radius: 5px;
+      }
+      input {
+        width: 400px;
+        height: 50px;
+        border: none;
+        &:first-child {
+          border-bottom: 1px solid $grey;
+          transition: border-bottom 0.2s ease-in-out;
+          &:focus {
+            border-bottom: 1px solid $blue;
+          }
+        }
+        &:nth-child(2) {
+          border-top: 1px solid $grey;
+          transition: border-top 0.2s ease-in-out;
+          &:focus {
+            border-top: 1px solid $blue;
+          }
+        }
+        &:first-child,
+        &:nth-child(2) {
+          padding-left: 10px;
+          font-size: 15px;
+          font-weight: 600;
+          &:focus {
+            outline: none;
+          }
+        }
+        &::placeholder {
+          font-size: 15px;
+          font-weight: 600;
+        }
+      }
+      .login-submit {
+        margin-top: 15px;
+        border-radius: 5px;
+        background-color: $blue;
+        color: white;
+        transition: background-color 0.2s ease-in-out;
+        &:hover {
+          background-color: white;
+          color: $blue;
+        }
+      }
+    }
+  }
+  .no--account {
+    margin: 30px 0;
+    font-size: 20px;
+    font-weight: 600;
+    a {
+      transition: 0.2s color ease-in-out;
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+  .github--account {
+    width: 300px;
+    height: 40px;
+    background-color: #6a7280;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out;
+    &:hover {
+      background-color: #858c99;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      i {
+        margin-right: 10px;
+        font-size: 20px;
+      }
+      span {
+        font-weight: 600;
+      }
+    }
+  }
+  .naver--account {
+    margin-top: 20px;
+    width: 300px;
+    height: 40px;
+    background-color: $green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out;
+    &:hover {
+      background-color: #02ab4e;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      .naver-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        color: $green;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-right: 10px;
+        i {
+          font-size: 15px;
+        }
+      }
+      span {
+        font-weight: 600;
+      }
+    }
+  }
+}

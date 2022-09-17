@@ -1,0 +1,42 @@
+header.base-header
+    div.home-mark
+        a(href="/").home-mark__home-btn
+            i.fab.fa-youtube
+            span WeTube
+            i.fas.fa-play
+    nav
+        ul.base-header__nav
+            li
+                a(href="/")
+                    i.fas.fa-home
+                    span Home
+            li 
+                a(href="/search")
+                    i.fas.fa-magnifying-glass
+                    span Search
+            if loggedIn
+                li 
+                    a(href="/videos/upload")
+                        i.fas.fa-video
+                        span Upload video
+                li 
+                    a(href=`/users/${loggedInUser._id}`)
+                        i.far.fa-user
+                        span My profile
+                li  
+                    a(href="/users/edit")
+                        i.fas.fa-user-gear
+                        span Edit Profile
+                li 
+                    a(href="/users/logout")
+                        i.fas.fa-right-from-bracket
+                        span Log Out
+            else
+                li 
+                    a(href="/join")
+                        i.fas.fa-right-to-bracket
+                        span Join   
+                li 
+                    a(href="/login")
+                        i.far.fa-user
+                        span Login

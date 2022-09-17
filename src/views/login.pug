@@ -1,18 +1,25 @@
 extends base
 
-block content 
-    if errorMessage 
-        span=errorMessage
-    form(method="POST")
-        input(placeholder="Username", name="username", type="text", required)
-        input(placeholder="Password", name="password", type="password", required)
-        input(type="submit", value="Login")
-        br
-        div
-            a(href="/users/github/start") Continue with Github &rarr;
-        div
-            a(href="/users/naver/start") Continue with Naver &rarr;
-    hr
-    div 
-        span Don't have an account? 
-        a(href="/join") Create one now &rarr;
+block content
+    div.login-form
+        span Join Wetube
+        div.login-form__column
+            form(method="POST").login-form__login
+                div
+                    input(placeholder="Username", name="username", type="text", required)
+                    input(placeholder="Password", name="password", type="password", required)
+                input(type="submit", value="Login").login-submit
+            if errorMessage 
+                span.error-message=errorMessage
+        div.no--account
+            span Don't have an account? 
+            a(href="/join") Create one now &rarr;
+        div.github--account
+            a(href="/users/github/start")
+                i.fab.fa-github
+                span Continue with Github &rarr;
+        div.naver--account
+            a(href="/users/naver/start")
+                div.naver-icon
+                    i.fas.fa-n
+                span Continue with Naver &rarr;
