@@ -1,0 +1,47 @@
+.hidden {
+  display: none;
+}
+
+.edit-profile__input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .edit-profile__inputSelect {
+    width: 345px;
+    height: 30px;
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+
+.edit-profile__submit {
+  margin-top: 20px;
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  background-color: $blue;
+  transition: background-color 0.2s ease-in-out;
+  &:hover {
+    background-color: $darkBlue;
+  }
+  margin-right: 30px;
+}
+
+.change-password {
+  a {
+    font-weight: 600;
+    color: white;
+    transition: color 0.2s ease-in-out;
+    &:hover {
+      color: $blue;
+    }
+  }
+}

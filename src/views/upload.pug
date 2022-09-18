@@ -5,10 +5,10 @@ block content
         span=errorMessage
     form(method="POST", enctype="multipart/form-data").upload
         div.upload--file
-            input(type="text", value="Select File", disabled).file--text
+            input(type="text", value="Select File", disabled).file--text.jsFileText
             label(for="video").upload--label
                 i.fas.fa-link
-        input(type="file", accept="video/*", required, id="video", name="video").upload--btn
+        input(type="file", accept="video/*", required, id="video", name="video").upload--btn.jsUploadBtn
         div.upload--info
             input(placeholder="Title", required, type="text", name="title", maxlength=80).upload--info__input
             input(placeholder="Description", required, type="text", name="description", minlength=20).upload--info__input

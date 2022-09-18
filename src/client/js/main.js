@@ -1,12 +1,12 @@
 import "../scss/styles.scss";
 
 //upload.pug
-const fileText = document.querySelector(".file--text");
-const uploadFile = document.querySelector(".upload--btn");
+const fileText = document.querySelector(".jsFileText");
+const uploadFile = document.querySelector(".jsUploadBtn");
 
-function handleChange(event) {
+function handleUploadChange(event) {
   const fileName = event.target.files[0].name;
   fileText.value = fileName;
 }
 
-uploadFile.addEventListener("change", handleChange);
+uploadFile.addEventListener("change", handleUploadChange);
