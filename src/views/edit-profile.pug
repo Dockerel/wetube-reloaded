@@ -8,14 +8,15 @@ block content
             input(type="text", value="Select File", disabled).file--text.jsFileText
             label(for="image").upload--label
                 i.fas.fa-link
-        input(type="file", accept="image/*", required, id="image", name="image").upload--btn.jsUploadBtn
-        input(type="file", id="avatar", name="avatar", accept="image/*").edit-profile--select.hidden
+            input(type="file", id="image", name="avatar", accept="image/*").edit-profile--select.hidden.jsUploadBtn
         div.edit-profile__input
             input(placeholder="Name", name="name", type="text", required, value=loggedInUser.name).edit-profile__inputSelect
             input(placeholder="Email", name="email", type="email", required, value=loggedInUser.email).edit-profile__inputSelect
             input(placeholder="Username", name="username", type="text", required, value=loggedInUser.username).edit-profile__inputSelect
             input(placeholder="Location", name="location", type="text", required, value=loggedInUser.location).edit-profile__inputSelect
-        div.change-password
             input(type="submit", value="Update Profile").edit-profile__submit
+        div.change-password
             if !loggedInUser.socialOnly
                 a(href="change-password") Change Password &rarr;
+block scripts
+    script(src="/static/js/fileSelect.js")

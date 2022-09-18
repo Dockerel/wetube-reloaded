@@ -5,18 +5,20 @@ block content
     div.watch
         div.watch-videoPart
             video(src="/" + video.fileUrl, controls).watch--video
-            div.watch__column
-                div.watch-video--info
-                    span=video.title
-                    p=video.description
-                    small #{video.createdAt.getFullYear()}년 #{video.createdAt.getMonth()}월 #{video.createdAt.getDate()}일 ∙ #{video.createdAt.getHours()}시 #{video.createdAt.getMinutes()}분
-                div.watch-video__owner
-                    small  Uploaded by 
-                        a(href=`/users/${video.owner._id}`)=video.owner.name
-                if String(video.owner._id) === String(loggedInUser._id)
-                    a(href=`${video.id}/edit`) Edit Video &rarr;
-                    br
-                    a(href=`${video.id}/delete`) Delete Video &rarr;
-        div.video_grid.video_grid--watch
-            each video in videos
-                +video(video)
+        //-     div.watch__column
+        //-         div.watch-video--info
+        //-             span=video.title
+        //-             p=video.description
+        //-             small #{video.createdAt.getFullYear()}년 #{video.createdAt.getMonth()}월 #{video.createdAt.getDate()}일 ∙ #{video.createdAt.getHours()}시 #{video.createdAt.getMinutes()}분
+        //-         div.watch-video__owner
+        //-             small  Uploaded by 
+        //-                 a(href=`/users/${video.owner._id}`)=video.owner.name
+        //-         if String(video.owner._id) === String(loggedInUser._id)
+        //-             a(href=`${video.id}/edit`) Edit Video &rarr;
+        //-             br
+        //-             a(href=`${video.id}/delete`) Delete Video &rarr;
+        //- div.video_grid.video_grid--watch
+        //-     each video in videos
+        //-         +video(video)
+block scripts
+    script(src="/static/js/videoPlayer.js")
