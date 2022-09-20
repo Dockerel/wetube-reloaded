@@ -1,0 +1,144 @@
+.watch {
+  margin-left: 50px;
+}
+
+#videoContainer {
+  position: relative;
+  .normal-screen {
+    width: 1000px;
+    height: 560px;
+  }
+  .full-screen {
+    object-fit: contain;
+  }
+}
+
+#videoControls {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
+  #videoControls__column {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    & > div {
+      display: flex;
+      align-items: center;
+    }
+    #timePart {
+      display: flex;
+    }
+  }
+}
+
+#timeline {
+  height: 5px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+  background: rgba(131, 131, 131, 0.5);
+}
+
+#timeline::-webkit-slider-runnable-track {
+  cursor: pointer;
+  border: none;
+}
+
+#timeline::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: $red;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  &:hover {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+#volume {
+  height: 5px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 70px;
+  border-radius: 5px;
+  background: rgba(131, 131, 131);
+}
+
+#volume::-webkit-slider-runnable-track {
+  cursor: pointer;
+  border: none;
+}
+
+#volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: $red;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  &:hover {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+#play,
+#mute,
+#fullScreen {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 15px;
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: $red;
+  }
+}
+
+#fullScreen {
+  font-size: 15px;
+  transition: font-size 0.1s ease-in-out;
+  &:hover {
+    font-size: 17px;
+  }
+}
+
+#timePart {
+  font-size: 12px;
+  span {
+    &:nth-child(2) {
+      display: inline-block;
+      margin: 0 3px;
+    }
+  }
+}
+
+#play,
+#mute-space,
+#volume,
+#timePart {
+  margin-right: 7px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.hidden:not(.showing) {
+  visibility: hidden;
+}
+
+#mute {
+  display: flex;
+}
+
+#muteDiv {
+  display: flex;
+  align-items: center;
+}

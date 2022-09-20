@@ -220,7 +220,7 @@ export const postEdit = async (req, res) => {
       { new: true }
     );
     req.session.user = updatedUser;
-    res.redirect("/users/edit");
+    res.redirect("/");
   } catch (error) {
     return res.status(400).render("edit-profile", {
       pageTitle: "Edit Profile",
@@ -269,6 +269,7 @@ export const see = async (req, res) => {
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User not found." });
   }
+  console.log(user);
   return res.render("users/profile", {
     pageTitle: user.name,
     user,
