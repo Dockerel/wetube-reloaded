@@ -139,6 +139,29 @@ const handlevideoControlsMouseleave = () => {
   videoControls.classList.remove("showing");
 };
 
+const handleVideoDblclick = () => {
+  const fullscreen = document.fullscreenElement;
+  if (fullscreen) {
+    document.exitFullscreen();
+  } else {
+    videoContainer.requestFullscreen();
+  }
+  fullScreenIcon.classList.add(fullscreen ? "fa-expand" : "fa-compress");
+  fullScreenIcon.classList.remove(fullscreen ? "fa-compress" : "fa-expand");
+  video.classList.add(fullscreen ? "normal-screen" : "full-screen");
+  video.classList.remove(fullscreen ? "full-screen" : "normal-screen");
+};
+
+const handleVideoClickPlayPause = () => {
+  if (video.paused) {
+    video.play();
+  } else {
+    video.pause();
+  }
+  playBtnIcon.classList.add(video.paused ? "fa-play" : "fa-pause");
+  playBtnIcon.classList.remove(video.paused ? "fa-pause" : "fa-play");
+};
+
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMute);
 volumeRange.addEventListener("input", handleVolumeChange);
@@ -152,3 +175,5 @@ videoControls.addEventListener("mouseenter", handleVideoControls);
 muteDiv.addEventListener("mouseover", handleMuteMouseover);
 muteDiv.addEventListener("mouseleave", handleMuteMouseleave);
 videoControls.addEventListener("mouseleave", handlevideoControlsMouseleave);
+video.addEventListener("dblclick", handleVideoDblclick);
+video.addEventListener("click", handleVideoClickPlayPause);
