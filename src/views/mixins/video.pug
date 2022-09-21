@@ -11,5 +11,5 @@ mixin video(video)
                     div.video__info--detail
                         a(href=`/users/${video.owner._id}`)
                             span=video.owner.username
-                        small ∙ #{video.createdAt.getMonth()}월 #{video.createdAt.getDate()}일
-                
+                        small ∙ #{video.createdAt.getMonth()}월 #{video.createdAt.getDate()}일 
+                        small ∙ #{video.meta.views}회
