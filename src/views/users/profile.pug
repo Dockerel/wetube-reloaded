@@ -13,10 +13,9 @@ block content
                 span=user.location
         div.videoProfile-video
             each video in user.videos
-                
                 a(href=`/videos/${video.id}`)
                     div.videoProfile__link
-                        div.videoProfile__thumbnail
+                        div.video__thumbnail(style=`background-image:url(/${video.thumbUrl});background-size:cover;background-position:center`)
                         div.videoProfile__column
                             div.videoProfile__info
                                 h4 #{video.title}
