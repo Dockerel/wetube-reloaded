@@ -75,7 +75,7 @@ const handleStart = () => {
   setTimeout(() => {
     actionBtn.disabled = false;
     actionBtn.innerText = "Download Record";
-  }, 5000);
+  }, 3000);
   actionBtn.addEventListener("click", handleDownload);
   recorder = new MediaRecorder(stream);
   recorder.ondataavailable = (event) => {
