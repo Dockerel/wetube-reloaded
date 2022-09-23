@@ -7,6 +7,7 @@ export const home = async (req, res) => {
     .sort({ createdAt: "desc" })
     .populate("owner");
   const users = await User.find({});
+  console.log(users);
   return res.render("home", { pageTitle: "Home", videos });
 };
 export const watch = async (req, res) => {
@@ -152,4 +153,21 @@ export const createComment = async (req, res) => {
     await video.save();
     return res.status(201).json({ newCommentId: comment._id });
   }
+};
+
+export const deleteComment = async (req, res) => {
+  const {
+    session: { user },
+    body: { commentId, videoId },
+  } = req;
+
+  const commentUser = await Comment.find({ _id: commentId });
+
+  const commentWriter = commentUser[0].owner;
+
+  if (String(user._id) === String(commentWriter)) {
+    // 세션의 현재 로그인해 있는 유저 === comment의 owner
+    await Comment.findOneAndDelete({ _id: commentId });
+  }
+  return res.status(200).redirect(`/videos/${videoId}`);
 };
