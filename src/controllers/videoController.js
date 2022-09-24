@@ -160,9 +160,7 @@ export const deleteComment = async (req, res) => {
     session: { user },
     body: { commentId, videoId },
   } = req;
-
   const commentUser = await Comment.find({ _id: commentId });
-
   const commentWriter = commentUser[0].owner;
 
   if (String(user._id) === String(commentWriter)) {

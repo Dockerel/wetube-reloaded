@@ -47,23 +47,26 @@
   }
 }
 
-.video__add-comments {
+.editVideoBtn,
+.deleteVideoBtn {
   display: flex;
-  justify-content: center;
+  margin-top: 10px;
+  font-weight: 600;
+  width: 120px;
 }
 
-.video__comments {
-  display: flex;
-  flex-direction: column;
-  max-width: 320px;
-  width: 100%;
-  margin: 0 auto;
-  margin-top: 20px;
-  .video__comment {
-    background-color: white;
-    color: black;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 9999px;
+.editVideoBtn {
+  color: white;
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: $blue;
+  }
+}
+
+.deleteVideoBtn {
+  color: white;
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: $red;
   }
 }

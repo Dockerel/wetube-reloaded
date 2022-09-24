@@ -71,7 +71,8 @@ const handleTimeUpdate = () => {
   timeline.value = video.currentTime;
   if (video.currentTime === video.duration) {
     video.paused = true;
-    playBtn.innerText = "Play";
+    playBtnIcon.classList.remove("fa-pause");
+    playBtnIcon.classList.add("fa-play");
   }
 };
 
