@@ -134,7 +134,7 @@ export const startNaverLogin = (req, res) => {
   const config = {
     response_type: "code",
     client_id: process.env.NAVER_CLIENT,
-    redirect_uri: "http://localhost:4000/users/naver/finish",
+    redirect_uri: "http://wetube-giheon.herokuapp.com/users/naver/finish",
     state: process.env.NAVER_STATE,
   };
   const params = new URLSearchParams(config).toString();
