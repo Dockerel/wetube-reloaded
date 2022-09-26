@@ -5,10 +5,11 @@ block content
     div.user
         div.user-profile
             div.user-profile__column
-                if user.avatarUrl.includes("github") || user.avatarUrl.includes("naver")
-                    img(src=user.avatarUrl)
-                else
-                    img(src="/" + user.avatarUrl)
+                if user.avatarUrl === ""
+                    span 😇
+                else 
+                    if user.avatarUrl
+                        img(src=user.avatarUrl crossorigin)
             div.user-profile__column
                 span=user.name 
                 span=user.username
