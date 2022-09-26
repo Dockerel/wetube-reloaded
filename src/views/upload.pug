@@ -2,7 +2,7 @@ extends base.pug
 
 block content
     div#recordPart
-        video#preview
+        video(crossorigin)#preview
         button#actionBtn Start Recording
     if errorMessage 
         span=errorMessage

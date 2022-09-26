@@ -62,8 +62,10 @@ const formatTime = (seconds) =>
   new Date(Math.floor(seconds) * 1000).toISOString().substring(11, 19);
 
 const handleLoadedMeta = () => {
-  totalTime.innerText = formatTime(video.duration);
-  timeline.max = Math.floor(video.duration);
+  if (!isNaN(video.duration)) {
+    totalTime.innerText = formatTime(video.duration);
+    timeline.max = Math.floor(video.duration);
+  }
 };
 
 const handleTimeUpdate = () => {
@@ -171,7 +173,8 @@ const handleEnded = () => {
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMute);
 volumeRange.addEventListener("input", handleVolumeChange);
-video.addEventListener("loadedmetadata", handleLoadedMeta);
+video.addEventListener("canplay", handleLoadedMeta);
+handleLoadedMeta();
 video.addEventListener("timeupdate", handleTimeUpdate);
 
 video.addEventListener("ended", handleEnded);
