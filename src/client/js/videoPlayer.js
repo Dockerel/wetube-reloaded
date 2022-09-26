@@ -67,7 +67,6 @@ const handleLoadedMeta = () => {
     timeline.max = Math.floor(video.duration);
   }
 };
-
 const handleTimeUpdate = () => {
   currentTime.innerText = formatTime(video.currentTime);
   timeline.value = video.currentTime;
