@@ -9,7 +9,7 @@ mixin video(video)
                             span 😇
                         else 
                             if video.owner.avatarUrl
-                                img(src=video.owner.avatarUrl, crossorigin)
+                                img(src=video.owner.avatarUrl crossorigin)
                 div.video__info
                     h4 #{video.title}
                     div.video__info--detail
