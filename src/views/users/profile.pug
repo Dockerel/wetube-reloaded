@@ -19,7 +19,7 @@ block content
             each video in user.videos
                 a(href=`/videos/${video.id}`)
                     div.videoProfile__link
-                        div.video__thumbnail(style=`background-image:url(/${video.thumbUrl});background-size:cover;background-position:center`)
+                        div.video__thumbnail(style=`background-image:url(${video.thumbUrl});background-size:cover;background-position:center`)
                         div.videoProfile__column
                             div.videoProfile__info
                                 h4 #{video.title}
