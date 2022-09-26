@@ -75,7 +75,8 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      i {
+      position: relative;
+      .fa-comment {
         font-size: 20px;
         transition: color 0.2s ease-in-out;
         margin-right: 15px;
@@ -101,5 +102,15 @@
         }
       }
     }
+  }
+}
+.commentLiked {
+  position: absolute;
+  bottom: 1px;
+  left: 173px;
+  font-size: 15px;
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: $blue;
   }
 }

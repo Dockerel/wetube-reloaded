@@ -7,7 +7,6 @@ export const home = async (req, res) => {
     .sort({ createdAt: "desc" })
     .populate("owner");
   const users = await User.find({});
-  console.log(users);
   return res.render("home", { pageTitle: "Home", videos });
 };
 export const watch = async (req, res) => {
@@ -167,5 +166,18 @@ export const deleteComment = async (req, res) => {
     // 세션의 현재 로그인해 있는 유저 === comment의 owner
     await Comment.findOneAndDelete({ _id: commentId });
   }
-  return res.status(200).redirect(`/videos/${videoId}`);
+  return res.sendStatus(200);
+};
+
+export const thumbsUpComment = async (req, res) => {
+  const {
+    body: { commentId, videoId },
+  } = req;
+  const targetComment = await Comment.findOne({ _id: commentId });
+  console.log(targetComment);
+  if (targetComment.liked === true) {
+    targetComment.liked = false;
+  } else if (targetComment.liked === false) targetComment.liked = true;
+  await targetComment.save();
+  return res.status(200).json({ likedStatus: targetComment.liked });
 };

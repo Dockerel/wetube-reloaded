@@ -48,7 +48,12 @@ block content
                         i.fas.fa-comment 
                         div.comment__column
                             span   #{comment.text}
-                            span #{comment.createdAt.getMonth()}월 #{comment.createdAt.getDate()}일 ∙ #{comment.createdAt.getHours()}시 #{comment.createdAt.getMinutes()}분
+                            span #{String(comment.createdAt.getMonth()).padStart(2, "0")}월 #{String(comment.createdAt.getDate()).padStart(2, "0")}일 ∙ #{String(comment.createdAt.getHours()).padStart(2, "0")}시 #{String(comment.createdAt.getMinutes()).padStart(2, "0")}분
+                        if comment.liked 
+                            i.fas.fa-thumbs-up.commentLiked
+                        else 
+                            i.far.fa-thumbs-up.commentLiked
+                        
                     if String(comment.owner._id) === String(loggedInUser._id)
                         button.deleteBtn ❌
     
