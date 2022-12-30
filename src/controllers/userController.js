@@ -37,6 +37,7 @@ export const postJoin = async (req, res) => {
 };
 export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Login" });
+
 export const postLogin = async (req, res) => {
   const { username, password } = req.body;
   const pageTitle = "Login";
@@ -134,7 +135,7 @@ export const startNaverLogin = (req, res) => {
   const config = {
     response_type: "code",
     client_id: process.env.NAVER_CLIENT,
-    redirect_uri: "http://wetube-giheon.herokuapp.com/users/naver/finish",
+    redirect_uri: "https://wetube-clone.fly.dev/users/naver/finish",
     state: process.env.NAVER_STATE,
   };
   const params = new URLSearchParams(config).toString();
